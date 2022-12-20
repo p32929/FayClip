@@ -74,13 +74,13 @@ class MenuWindowHandler {
 	}
 
 	hideMenuGui(playFadeAnimation := True) {
-		if(playFadeAnimation) {
-			Loop, % loopIndex := 10
-			{
-				WinSet, Transparent, % loopIndex-- * 25, % "ahk_id " this.menuGui.HANDLE_GUI
-				Sleep 25
-			}
-		}
+		; if(playFadeAnimation) {
+		; 	Loop, % loopIndex := 10
+		; 	{
+		; 		WinSet, Transparent, % loopIndex-- * 25, % "ahk_id " this.menuGui.HANDLE_GUI
+		; 		Sleep 25
+		; 	}
+		; }
 		Gui ClipMenu:Hide
 		if(this.reloadOnHide) {
 			Reload
