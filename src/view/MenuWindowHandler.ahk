@@ -57,12 +57,13 @@ class MenuWindowHandler {
 				Send, {Down}
 				GuiControl, Focus, % this.menuGui.HANDLE_SEARCH_BOX
 			} else if(InStr(ErrorLevel, "Delete")) {
-				selectedClipIndex := GetControlValue(this.menuGui.HANDLE_CLIPS_VIEW)
-				this.menuGui.menuClipsViewHandler.deleteItemAtIndex(selectedClipIndex)
-				this.menuGui.clipStore.deleteAtIndex(selectedClipIndex)
-
 				GuiControl, Focus, % this.menuGui.HANDLE_CLIPS_VIEW
-				Send, {Down}
+				selectedClipIndex := GetControlValue(this.menuGui.HANDLE_CLIPS_VIEW)
+				if (selectedClipIndex >0) {
+					this.menuGui.menuClipsViewHandler.deleteItemAtIndex(selectedClipIndex)
+					this.menuGui.clipStore.deleteAtIndex(selectedClipIndex)
+					Send, {Down}
+				}
 				GuiControl, Focus, % this.menuGui.HANDLE_SEARCH_BOX
 			} else {
 				this.hideMenuGui()
